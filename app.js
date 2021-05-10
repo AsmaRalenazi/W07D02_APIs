@@ -35,8 +35,8 @@ app.get ("/todos",((req, res) => {
     // send back first user
     res.json(todos);
 
-    
-  const found = todos.find((element) => {
+   let i; 
+  const found = todos.find((element,i) => {
     return element.name === todos;
   });
 
@@ -44,7 +44,7 @@ app.get ("/todos",((req, res) => {
     // set the response status code to 200 (OK)
     // sends back a response of the found user
     res.status(200);
-    res.json(element.name);
+    res.json(element.name[i]);
   } else {
     // set the response status code to 404 (Not Found)
     res.status(404);
@@ -58,7 +58,20 @@ app.get ("/todos",((req, res) => {
     res.send('DELETE request ')
   })
 
-  
+  app.put("/complete/todo/:name",((req, res) => {
+    // set the response status code to 200 (OK)
+    res.status(200);
+    // send back first user
+    res.json(todos);
+  })) 
+
+
+  app.get("/completed/todos",((req, res) => {
+    // set the response status code to 200 (OK)
+    res.status(200);
+    // send back first user
+    res.json(todos);
+  })) 
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
