@@ -1,0 +1,27 @@
+{
+  "name": "W07D02_APIs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "index":"touch index.js",
+    "start":"node index.js",
+    "div": "nodemon index.js",
+    "app":"touch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsmaRalenazi/W07D02_APIs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AsmaRalenazi/W07D02_APIs/issues"
+  },
+  "homepage": "https://github.com/AsmaRalenazi/W07D02_APIs#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
