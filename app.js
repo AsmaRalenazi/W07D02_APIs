@@ -21,7 +21,7 @@ const todos = [{ todo: "wake up", isCompleted: false },
 app.get ("/todos",((req, res) => {
     // set the response status code to 200 (OK)
     res.status(200);
-    // send back first user
+   
     res.json(todos);
   }))
 
@@ -36,7 +36,7 @@ app.get ("/todos",((req, res) => {
       todos.push(newUser);
     // set the response status code to 201
     res.status(201);
-    // send back first user
+   
     res.json(todos);
   }))
 
@@ -48,7 +48,7 @@ app.get ("/todos",((req, res) => {
     const user = req.params.name
     // set the response status code to 200 (OK)
     res.status(200);
-    // send back first user
+   
     res.json(todos);
 
    let i; 
@@ -58,7 +58,7 @@ app.get ("/todos",((req, res) => {
   });
 
   if (found) {
-      todos[i] = req.body.name
+      todos[i] = req.body
     // set the response status code to 200 (OK)
     // sends back a response of the found user
     res.status(200);
@@ -95,11 +95,29 @@ app.get ("/todos",((req, res) => {
   //Create an API to handel a PUT request to the 
   //endpoint /complete/todo/:name that sets isCompleted to true for the matched todo object.
   app.put("/complete/todo/:name",((req, res) => {
+    const user = req.params.name
     // set the response status code to 200 (OK)
     res.status(200);
-    // send back first user
+    
     res.json(todos);
-  })) 
+    let i; 
+    const found = todos.find((element,index) => {
+        i = index
+      return element.todo === user;
+    });
+  
+    if (found) {
+        todos[i] = req.body
+      // set the response status code to 200 (OK)
+      // sends back a response of the found user
+      res.status(200);
+      res.json(todos[i]);
+    } else {
+      // set the response status code to 404 (Not Found)
+      res.status(404);
+      res.json("User not found");
+  
+    }}))
 
 
   //q8
@@ -108,9 +126,19 @@ app.get ("/todos",((req, res) => {
   app.get("/completed/todos",((req, res) => {
     // set the response status code to 200 (OK)
     res.status(200);
-    // send back first user
     res.json(todos);
-  })) 
+    res.send(todos)
+    
+    let found = todos.find((elm) => {
+
+        return elm.isCompleted === true
+    })
+      
+    // if(found) {
+    //       res.send(todos)
+    // }
+  }))
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
