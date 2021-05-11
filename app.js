@@ -134,9 +134,10 @@ app.get ("/todos",((req, res) => {
         return elm.isCompleted === true
     })
       
-    // if(found) {
-    //       res.send(todos)
-    // }
+    if(found) {
+        todos.
+          res.send(todos)
+    }
   }))
 
 
